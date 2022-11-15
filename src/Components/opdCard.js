@@ -11,14 +11,16 @@ export default function Opdcard() {
         justifyContent: "center",
         borderColor: "white",
         borderRadius: 5,
+        
       }}
+    className={"font-link"}
     >
       <div style={{ width: "65rem", background: "#C9FDD7" }}>
         <div className="d-flex justify-content-end p-2 d-grid gap-2">
-          <Button variant="success" className="text-white fw-bold">
+          <Button variant="success" className="fw-bold font-link" >
             EDIT
           </Button>
-          <Button variant="danger" className="fw-bold">
+          <Button variant="danger" className="fw-bold font-link">
             DELETE
           </Button>
         </div>

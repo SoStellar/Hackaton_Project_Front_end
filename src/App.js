@@ -1,6 +1,6 @@
 import Navbar  from './Components/Navbar';
 import './App.css';
-import Opdcard from './Components/Opdcard';
+import Opdcard from './Components/opdCard';
 
 function App() {
   return (
