@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Nav, Navbar, NavDropdown, Stack, Row, Col } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown,  } from 'react-bootstrap';
+import {Tab,Tabs} from 'react-bootstrap';
 import { ImProfile } from "react-icons/im";
 import { FaUserEdit } from "react-icons/fa";
 import { IoCalendar } from "react-icons/io5";
@@ -42,27 +43,9 @@ export default function CollapsibleExample() {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <Container fluid className={"font-link"} style={{ height: "62.5rem"}} >
-                <Row >
-                    <Col md={2}  style={{ width: "7.5rem",}} >
-                        <Stack gap={0} className="text-center mt-5">
-                            <Nav.Link href="#treatment" className='border-info rounded-top pt-5' style={{ height: "7.5rem", backgroundColor: "#C9FDD7", color: "#6892D5" }}>
-                                ข้อมูลการรักษา
-                            </Nav.Link>
-                            <Nav.Link href="#Picture" className="border-top border-info pt-5" style={{ height: "7.5rem",backgroundColor: "#C9FDD7", color: "#6892D5" }}>
-                                X-ray flim
-                            </Nav.Link>
-                            <Nav.Link href="#Contact" className="border-top border-info rounded-bottom pt-5" style={{ height: "7.5rem",backgroundColor: "#C9FDD7", color: "#6892D5" }}>
-                                ข้อมูลส่วนตัวคนไข้
-                            </Nav.Link>
-                        </Stack>
-                    </Col>
-                    <Col md={6} >2 of 3</Col>
-                    <Col md={4}>3 of 3</Col>
-                </Row>
-                </Container>
+    
 
-            
+
 
         </>
     );

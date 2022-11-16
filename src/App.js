@@ -1,12 +1,16 @@
 import Navbar  from './Components/Navbar';
-import './App.css';
+import ServiceBar  from './Components/ServiceBar';
 import Opdcard from './Components/opdCard';
+import './App.css';
+import { Row,Col } from 'react-bootstrap';
+
 
 function App() {
   return (
     <>
     <Navbar />
-    <Opdcard />
+    <ServiceBar />
+    
     </>
   );
 }
