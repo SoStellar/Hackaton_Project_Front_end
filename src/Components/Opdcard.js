@@ -5,7 +5,7 @@ export default function Opdcard() {
   return (
     <Container
       style={{
-        marginTop: "6%",
+        marginTop: "3rem",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -13,7 +13,7 @@ export default function Opdcard() {
         borderRadius: 5,
         
       }}
-    className={"font-link"}
+      className="font-link"
     >
       <div style={{ width: "65rem", background: "#C9FDD7" }}>
         <div className="d-flex justify-content-end p-2 d-grid gap-2">
