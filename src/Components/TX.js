@@ -1,13 +1,14 @@
 import React from 'react';
-import { Container, Stack, Nav, Row, Col, Tab, Tabs, Card } from 'react-bootstrap';
+import { Container, Stack, Nav, Row, Col, Tab, Tabs, Card, Button } from 'react-bootstrap';
 import HistoryTable from './TableHistory';
-
+import AddCaseTable from './TableAddCase';
+import { HiPlus } from 'react-icons/hi';
 export default function TX() {
     return (
         <>
             <Container fluid className="font-link" style={{ height: "62.5rem" }} >
                 <Row >
-                    <Col md={2}  style={{ width: "7.5rem" }} >
+                    <Col md={2} style={{ width: "7.5rem" }} >
                         <Stack gap={0} className="text-center  mt-5 mt-5 pt-5">
                             <Nav.Link href="#treatment" className='border-info rounded-top pt-5'
                                 style={{ height: "7.5rem", backgroundColor: "#C9FDD7", color: "#6892D5" }}>
@@ -37,33 +38,33 @@ export default function TX() {
                                 {/* <Card.Text> นาย อีธาน วินเทอร์ </Card.Text> */}
                             </Card.Body>
                         </Card>
-                        <Col md={4}></Col>
+                        <Col md={6}></Col>
                         <Container fluid className='border  rounded mt-2 font-link' style={{ height: "31rem", borderColor: "#BFBFBF", borderWidth: "2px" }}  >
                             <Row >
-                                <Col sm={1} className="text-center"  style={{ height: "31rem"}}>
+                                <Col sm={1} className="text-center" style={{ height: "31rem" }}>
                                     Right
                                 </Col>
-                                <Col md={10}  style={{ height: "31rem"}}>
+                                <Col md={10} style={{ height: "31rem" }}>
 
                                 </Col>
-                                <Col sm={1} className="text-center"  style={{ height: "31rem"}}>
+                                <Col sm={1} className="text-center" style={{ height: "31rem" }}>
                                     Left
                                 </Col>
                             </Row>
                         </Container>
                     </Col>
-                    <Col md={4}>
+                    <Col md={5}>
                         <Tabs
                             defaultActiveKey="profile"
                             id="uncontrolled-tab-example"
                             className="mt-5"
-                            style={{ width: "34rem"}}
+                            style={{ width: "34rem" }}
                         >
                             <Tab eventKey="history" title="History">
                                 <HistoryTable />
                             </Tab>
                             <Tab eventKey="case" title="Add case">
-                            
+                                <AddCaseTable />
                             </Tab>
                         </Tabs>
                     </Col>
