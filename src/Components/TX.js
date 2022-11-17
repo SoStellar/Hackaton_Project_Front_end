@@ -1,9 +1,16 @@
-import React from 'react';
-import { Container, Stack, Nav, Row, Col, Tab, Tabs, Card, Button } from 'react-bootstrap';
+import { React, useState } from 'react';
+import { Container, Stack, Nav, Row, Col, Tab, Tabs, Card, Button, Modal } from 'react-bootstrap';
 import HistoryTable from './TableHistory';
 import AddCaseTable from './TableAddCase';
+import Datepicker from './Datepicker';
 import { HiPlus } from 'react-icons/hi';
+
+
+
 export default function TX() {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
         <>
             <Container fluid className="font-link" style={{ height: "62.5rem" }} >
@@ -65,9 +72,47 @@ export default function TX() {
                             </Tab>
                             <Tab eventKey="case" title="Add case">
                                 <AddCaseTable />
+                                <Button className='bg-white ms-5'
+                                    style={{
+                                        borderRadius: "3rem", borderColor: "#6892D5",
+                                        borderWidth: "2px", color: "#6892D5"
+                                    }}
+                                    value={'input'}
+                                    onClick={handleShow}>
+                                    <HiPlus />
+                                </Button>
                             </Tab>
                         </Tabs>
                     </Col>
+                    <Modal
+                        show={show}
+                        onHide={handleClose}
+                        backdrop="static"
+                        keyboard={false}
+                    >
+                        <Modal.Header closeButton>
+                            <Modal.Title style={{ color: "#6892D5" }}>Add Case</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body >
+                            <Container>
+                                <Row>
+                                    <Col xs={12} md={8}>
+                                    
+                                        <Datepicker style={{ color: "#6892D5" }} />
+                                    </Col>
+                                    <Col xs={6} md={4}>
+                                        .col-xs-6 .col-md-4
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="danger" onClick={handleClose}>
+                                Close
+                            </Button>
+                            <Button variant="primary">Add</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Row>
             </Container>
         </>
