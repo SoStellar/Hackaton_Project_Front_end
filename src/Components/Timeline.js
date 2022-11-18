@@ -4,6 +4,7 @@ import {
     Textarea, Switch, Datepicker, SegmentedGroup, SegmentedItem,
     localeTh
 } from '@mobiscroll/react';
+import { Container } from 'react-bootstrap';
 
 setOptions({
     locale: localeTh,
@@ -100,6 +101,7 @@ export default function Timeline() {
             // update the event in the list
             const index = myEvents.findIndex(x => x.id === tempEvent.id);;
             const newEventList = [...myEvents];
+
 
             newEventList.splice(index, 1, newEvent);
             setMyEvents(newEventList);
@@ -241,11 +243,13 @@ export default function Timeline() {
                     },
                     keyCode: 'enter',
                     text: 'Add',
-                    cssClass: 'mbsc-popup-button-primary'
+                    cssClass: 'mbsc-popup-button-primary' 
                 }
             ];
         }
     }, [isEdit, saveEvent]);
+
+    
 
     const onClose = useCallback(() => {
         if (!isEdit) {
@@ -274,7 +278,9 @@ export default function Timeline() {
         }
     }, [selectColor, setSelectedColor]);
 
-    return <div>
+    return (
+        <>
+        <Container>
         <Eventcalendar
 
             view={viewSettings}
@@ -361,5 +367,8 @@ export default function Timeline() {
                 })}
             </div>
         </Popup>
-    </div>
+   
+        </Container>
+        </>
+    )
 }
