@@ -9,7 +9,8 @@ import { Container } from 'react-bootstrap';
 setOptions({
     locale: localeTh,
     theme: 'ios',
-    themeVariant: 'light'
+    themeVariant: 'light',
+    className: 'font-link'
 });
 
 const now = new Date();
@@ -51,7 +52,7 @@ const colorPopup = {
     placeholder: "Please Select..."
 
 }
-const colors = ['#ffeb3c', '#ff9900', '#f44437', '#ea1e63', '#9c26b0', '#3f51b5', '', '#009788', '#4baf4f', '#7e5d4e'];
+const colors = ["#ffe57f","#ffcc80","#ffcdd2","#ff9e80","#eb8686","#f48fb1","#c5cae9","#b2ebf2","#bbdefb",,"#e6ee9c","#dbffb0","#d9ad7b","#d4d7da"];
 
 export default function Timeline() {
     const [myEvents, setMyEvents] = useState(defaultEvents);
@@ -282,8 +283,7 @@ export default function Timeline() {
         <>
         <Container>
         <Eventcalendar
-
-            view={viewSettings}
+                    view={viewSettings}
             data={myEvents}
             clickToCreate="double"
             dragToCreate={true}
@@ -330,15 +330,11 @@ export default function Timeline() {
                     <div className="color-label">Color</div>
                     <div className="mbsc-color-item-c" style={{ backgroundColor: selectedColor }}></div>
                 </div>
-                <SegmentedGroup onChange={statusChange}>
-                    <SegmentedItem value="busy" checked={popupEventStatus === 'busy'}>Show as busy</SegmentedItem>
-                    <SegmentedItem value="free" checked={popupEventStatus === 'free'}>Show as free</SegmentedItem>
-                </SegmentedGroup>
                 {isEdit ? <div className="mbsc-button-group"><Button className="mbsc-button-block" color="danger" variant="outline" onClick={onDeleteClick}>Delete event</Button></div> : null}
             </div>
         </Popup>
         <Popup
-            display="bottom"
+            display="center"
             contentPadding={false}
             showArrow={false}
             showOverlay={false}
@@ -352,7 +348,7 @@ export default function Timeline() {
                 {colors.map((color, index) => {
                     if (index < 5) {
                         return <div key={index} onClick={changeColor} className={"crud-color-c " + (tempColor === color ? 'selected' : '')} data-value={color}>
-                            <div className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check" style={{ background: color }}></div>
+                            <div className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check" style={{ backgroundColor: color }}></div>
                         </div>
                     } else return null;
                 })}
@@ -361,7 +357,7 @@ export default function Timeline() {
                 {colors.map((color, index) => {
                     if (index >= 5) {
                         return <div key={index} onClick={changeColor} className={"crud-color-c " + (tempColor === color ? 'selected' : '')} data-value={color}>
-                            <div className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check" style={{ background: color }}></div>
+                            <div className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check" style={{ backgroundColor: color }}></div>
                         </div>
                     } else return null;
                 })}
