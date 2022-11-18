@@ -52,7 +52,7 @@ const colorPopup = {
     placeholder: "Please Select..."
 
 }
-const colors = ["#ffe57f","#ffcc80","#ffcdd2","#ff9e80","#eb8686","#f48fb1","#c5cae9","#b2ebf2","#bbdefb",,"#e6ee9c","#dbffb0","#d9ad7b","#d4d7da"];
+const colors = ["#ffe57f", "#ffcc80", "#ffcdd2", "#ff9e80", "#eb8686", "#f48fb1", "#c5cae9", "#b2ebf2", "#bbdefb", , "#e6ee9c", "#dbffb0", "#d9ad7b", "#d4d7da"];
 
 export default function Timeline() {
     const [myEvents, setMyEvents] = useState(defaultEvents);
@@ -244,13 +244,13 @@ export default function Timeline() {
                     },
                     keyCode: 'enter',
                     text: 'Add',
-                    cssClass: 'mbsc-popup-button-primary' 
+                    cssClass: 'mbsc-popup-button-primary'
                 }
             ];
         }
     }, [isEdit, saveEvent]);
 
-    
+
 
     const onClose = useCallback(() => {
         if (!isEdit) {
@@ -281,90 +281,90 @@ export default function Timeline() {
 
     return (
         <>
-        <Container>
-        <Eventcalendar
+            <Container>
+                <Eventcalendar
                     view={viewSettings}
-            data={myEvents}
-            clickToCreate="double"
-            dragToCreate={true}
-            dragToMove={true}
-            dragToResize={true}
-            selectedDate={mySelectedDate}
-            onSelectedDateChange={onSelectedDateChange}
-            onEventClick={onEventClick}
-            onEventCreated={onEventCreated}
-            onEventDeleted={onEventDeleted}
-            onEventUpdated={onEventUpdated}
-        />
-        <Popup
-            display="bottom"
-            fullScreen={true}
-            contentPadding={false}
-            headerText={headerText}
-            anchor={anchor}
-            buttons={popupButtons}
-            isOpen={isOpen}
-            onClose={onClose}
-            responsive={responsivePopup}
-        >
-            <div className="mbsc-form-group">
-                <Input label="Title" value={popupEventTitle} onChange={titleChange} />
-                <Textarea label="Description" value={popupEventDescription} onChange={descriptionChange} />
-            </div>
-            <div className="mbsc-form-group">
-                <Switch label="All-day" checked={popupEventAllDay} onChange={allDayChange} />
-                <Input ref={startRef} label="Starts" />
-                <Input ref={endRef} label="Ends" />
-                <Datepicker
-                    select="range"
-                    controls={controls}
-                    touchUi={true}
-                    startInput={start}
-                    endInput={end}
-                    showRangeLabels={false}
-                    responsive={respSetting}
-                    onChange={dateChange}
-                    value={popupEventDate}
+                    data={myEvents}
+                    clickToCreate="double"
+                    dragToCreate={true}
+                    dragToMove={true}
+                    dragToResize={true}
+                    selectedDate={mySelectedDate}
+                    onSelectedDateChange={onSelectedDateChange}
+                    onEventClick={onEventClick}
+                    onEventCreated={onEventCreated}
+                    onEventDeleted={onEventDeleted}
+                    onEventUpdated={onEventUpdated}
                 />
-                <div onClick={openColorPicker} className="mbsc-color-scroll-cont mbsc-w-p  mbsc-comp m-3">
-                    <div className="color-label">Color</div>
-                    <div className="mbsc-color-item-c" style={{ backgroundColor: selectedColor }}></div>
-                </div>
-                {isEdit ? <div className="mbsc-button-group"><Button className="mbsc-button-block" color="danger" variant="outline" onClick={onDeleteClick}>Delete event</Button></div> : null}
-            </div>
-        </Popup>
-        <Popup
-            display="center"
-            contentPadding={false}
-            showArrow={false}
-            showOverlay={false}
-            anchor={colorAnchor}
-            isOpen={colorPickerOpen}
-            buttons={colorButtons}
-            responsive={colorPopup}
-            ref={colorPicker}
-        >
-            <div className="crud-color-row">
-                {colors.map((color, index) => {
-                    if (index < 5) {
-                        return <div key={index} onClick={changeColor} className={"crud-color-c " + (tempColor === color ? 'selected' : '')} data-value={color}>
-                            <div className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check" style={{ backgroundColor: color }}></div>
+                <Popup
+                    display="bottom"
+                    fullScreen={true}
+                    contentPadding={false}
+                    headerText={headerText}
+                    anchor={anchor}
+                    buttons={popupButtons}
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    responsive={responsivePopup}
+                >
+                    <div className="mbsc-form-group">
+                        <Input label="Title" value={popupEventTitle} onChange={titleChange} />
+                        <Textarea label="Description" value={popupEventDescription} onChange={descriptionChange} />
+                    </div>
+                    <div className="mbsc-form-group">
+                        <Switch label="All-day" checked={popupEventAllDay} onChange={allDayChange} />
+                        <Input ref={startRef} label="Starts" />
+                        <Input ref={endRef} label="Ends" />
+                        <Datepicker
+                            select="range"
+                            controls={controls}
+                            touchUi={true}
+                            startInput={start}
+                            endInput={end}
+                            showRangeLabels={false}
+                            responsive={respSetting}
+                            onChange={dateChange}
+                            value={popupEventDate}
+                        />
+                        <div onClick={openColorPicker} className="mbsc-color-scroll-cont mbsc-w-p  mbsc-comp m-3">
+                            <div className="color-label">Color</div>
+                            <div className="mbsc-color-item-c" style={{ backgroundColor: selectedColor }}></div>
                         </div>
-                    } else return null;
-                })}
-            </div>
-            <div className="crud-color-row">
-                {colors.map((color, index) => {
-                    if (index >= 5) {
-                        return <div key={index} onClick={changeColor} className={"crud-color-c " + (tempColor === color ? 'selected' : '')} data-value={color}>
-                            <div className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check" style={{ backgroundColor: color }}></div>
-                        </div>
-                    } else return null;
-                })}
-            </div>
-        </Popup>
-   
-        </Container>
+                        {isEdit ? <div className="mbsc-button-group"><Button className="mbsc-button-block" color="danger" variant="outline" onClick={onDeleteClick}>Delete event</Button></div> : null}
+                    </div>
+                </Popup>
+                <Popup
+                    display="center"
+                    contentPadding={false}
+                    showArrow={false}
+                    showOverlay={false}
+                    anchor={colorAnchor}
+                    isOpen={colorPickerOpen}
+                    buttons={colorButtons}
+                    responsive={colorPopup}
+                    ref={colorPicker}
+                >
+                    <div className="crud-color-row">
+                        {colors.map((color, index) => {
+                            if (index < 5) {
+                                return <div key={index} onClick={changeColor} className={"crud-color-c " + (tempColor === color ? 'selected' : '')} data-value={color}>
+                                    <div className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check" style={{ backgroundColor: color }}></div>
+                                </div>
+                            } else return null;
+                        })}
+                    </div>
+                    <div className="crud-color-row">
+                        {colors.map((color, index) => {
+                            if (index >= 5) {
+                                return <div key={index} onClick={changeColor} className={"crud-color-c " + (tempColor === color ? 'selected' : '')} data-value={color}>
+                                    <div className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check" style={{ backgroundColor: color }}></div>
+                                </div>
+                            } else return null;
+                        })}
+                    </div>
+                </Popup>
+
+            </Container>
         </>
     )
 }

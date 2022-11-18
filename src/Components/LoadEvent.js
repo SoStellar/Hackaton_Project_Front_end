@@ -18,6 +18,7 @@ export default function LoadEvents() {
             end: '2022-11-18T13:00',
             title: 'Tire change',
             color: '#7a5886',
+            
             taskType: 'material-repeat',
             resource: 1
         }]
