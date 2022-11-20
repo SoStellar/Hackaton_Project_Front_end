@@ -47,8 +47,8 @@ export default function TX() {
                             </Card.Body>
                         </Card>
                         <Col md={6}>
-                            <Container fluid className='border border-gray  rounded mt-2 font-link'
-                             style={{ height: "31rem",width: "45rem"}}  >
+                            <Container fluid className='border border-secondary  rounded mt-3 font-link'
+                             style={{ height: "35rem",width: "50rem"}}  >
                                 <Row >
                                     <Col md={1} className="text-center" style={{
                                         height: "31rem"}}>
