@@ -65,7 +65,8 @@ export default function XRayFilm() {
             </h1>
             <Container className="border border-secondary  border-3 rounded mt-3" 
             style={{ width: "26rem", height: "24rem", borderStyle: "dashed" }}>
-              <MdUploadFile  style={{ width: "15rem", height: "15rem", opacity: "30%",marginTop: "3rem",marginLeft: "5rem" }} />
+              <MdUploadFile  style={{ width: "15rem", height: "15rem", opacity: "30%",
+              marginTop: "3rem",marginLeft: "5rem" }} />
             </Container>
 
             <Form>
