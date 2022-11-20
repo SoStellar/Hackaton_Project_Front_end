@@ -4,6 +4,7 @@ import { BsSearch } from "react-icons/bs";
 
 export default function SearchPatient() {
   return (
+    <>
     <Container
       style={{
         marginTop: "1rem",
@@ -17,20 +18,21 @@ export default function SearchPatient() {
     >
       <Stack gap={2}>
         <h1
-          style={{ color: "#6892D5", textShadow: "1px 1px 1px black" }}
+          style={{ color: "#6892D5", textShadow: "1px 1px 1px #79D1C3" }}
           className=""
         >
-          Search Patient Information
+          ค้นหาข้อมูลผู้ป่วย
         </h1>
         <Stack direction="horizontal" gap={3}>
           <Form.Control
             className="me-auto"
-            placeholder="เลขประจำตัวประชาชน/พาสปอร์ต"
+            placeholder="เลขประจำตัวประชาชน/พาสสปอร์ต"
           />
-          <Button variant="outline-success" className="rounded-pill"><BsSearch /></Button>
+          <Button className="rounded-pill" variant="dark"  > <BsSearch /></Button>
           
         </Stack>
       </Stack>
     </Container>
+    </>
   );
 }
