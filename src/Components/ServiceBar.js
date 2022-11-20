@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Nav, Stack, Row, Col,Tab,Tabs} from 'react-bootstrap';
+import {Container, Nav, Stack, Row, Col} from 'react-bootstrap';
 
 export default function ServiceBar (){
     return(
@@ -7,7 +7,7 @@ export default function ServiceBar (){
         <Container fluid className={"font-link"} style={{ height: "62.5rem" }} >
                 <Row >
                     <Col md={2} style={{ width: "7.5rem", }} >
-                        <Stack gap={0} className="text-center shadow mt-5 pt-5">
+                        <Stack gap={0} className="text-center shadow mt-5">
                             <Nav.Link href="#treatment" className='border-info shadow rounded-top pt-5' 
                             style={{ height: "7.5rem", backgroundColor: "#C9FDD7", color: "#6892D5" }}>
                                 ข้อมูลการรักษา
@@ -23,7 +23,9 @@ export default function ServiceBar (){
                         </Stack>
                         </Col>
                         </Row>
+                        
         </Container>
+
         </>
     )
 }
