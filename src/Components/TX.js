@@ -4,7 +4,6 @@ import HistoryTable from './TableHistory';
 import AddCaseTable from './TableAddCase';
 import Datepicker from './Datepicker';
 import { HiPlus } from 'react-icons/hi';
-import { Checkbox } from '@mobiscroll/react';
 
 
 
@@ -13,9 +12,61 @@ export default function TX() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    var Upper_teeth = document.getElementsByName('UpperTeeth') 
+    const [UpperTeethList, setUpperTeethList] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,])
+    const [LowerTeethList, setLowerTeethList] = useState([17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32])
+    const idUpperTeeth = () => {
+        return (
+            <>
+                {
+                    UpperTeethList.map(
+                        (teeth, i) => {
+                            return (
+                                <Form.Check as={Col}
+                                
+                                    inline
+                                    type="checkbox"
+                                    id={`inline-teeth-upperTeeth` + i}
+                                    key={'upperTeethList' + i}
+                                    style={{ marginTop: "5rem"}}
+                                    label={teeth}
+                                    
+                            
+                                />
+                            )
+                        }
+                    )
 
+                }
 
+            </>
+        )
+    }
+    const idLowerTeeth = () => {
+        return (
+            <>
+                {
+                    LowerTeethList.map(
+                        (teeth, i) => {
+                            return (
+                                <Form.Check as={Col}
+                                    inline
+                                    type="checkbox"
+                                    id={`inline-teeth-lowerTeeth` + i}
+                                    key={'lowerTeethList' + i}
+                                    style={{ marginTop: "5rem" }}
+                                    label={teeth}
+                                />
+                            )
+                        }
+                    )
+
+                }
+
+            </>
+        )
+    }
+
+    console.log('TxPage')
     return (
         <>
             <Container fluid className="font-link" style={{ height: "62.5rem" }} >
@@ -36,52 +87,55 @@ export default function TX() {
                             </Nav.Link>
                         </Stack>
                     </Col>
-                    <Col md={6}>
-                        <Card className='mt-2 rounded' style={{ display: 'flex', flexDirection: 'row', width: '24rem', backgroundColor: "#C9FDD7" }}>
-                            <Card.Img
-                                variant='left'
-                                src={require('../Picture/exPatient.png')}
-                                width="60"
-                                height="60"
-                                className='mt-2 ms-2 mb-2'
-                            />
-                            <Card.Body className='ms-10'>
-                                <Card.Text style={{ color: "#6892D5" }}> CN 0001 <br /> นาย อีธาน วินเทอร์ </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        <Col md={6}>
-                            <Container fluid className='border border-secondary  rounded mt-3 font-link'
-                                style={{ height: "35rem", width: "50rem" }}  >
-                                <Row >
-                                    <Col md={2} className="d-flex align-items-start flex-column"
-                                        style={{ height: "35rem", color: "#6892D5" }}>
-                                        <div class="mb-auto p-2">Upper right</div>
-                                        <div class="p-2">Lower right</div>
-                                    </Col>
-                                    <Col md={8} className="img-responsive center-block"
-                                        style={{ height: "35rem" }}>
-                                        <Form className='teethCheckbox'>
-                                            <idTeeth />
-                                        </Form>
+                    <Col md={7}>
+                        <Col md={3}>
+                            <Card className='mt-2 rounded' style={{ display: 'flex', flexDirection: 'row', width: '24rem', backgroundColor: "#C9FDD7" }}>
+                                <Card.Img
+                                    variant='left'
+                                    src={require('../Picture/exPatient.png')}
+                                    width="60"
+                                    height="60"
+                                    className='mt-2 ms-2 mb-2'
+                                />
+                                <Card.Body className='ms-10'>
+                                    <Card.Text style={{ color: "#6892D5" }}> CN 0001 <br /> นาย อีธาน วินเทอร์ </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
 
-                                        <img src={require("../Picture/TeethDiagram.png")} class="img-fluid align-self-center" alt="TeethDiagram"
-                                            style={{}} />
-                                    </Col>
-                                    <Col md={2} className="d-flex align-items-end flex-column"
+                        <Col md={4}>
+                            <Container fluid className='border border-secondary  rounded mt-3 font-link'
+                                style={{ height: "35rem", width: "60rem" }}  >
+                                <Row >
+                                    <Col md={1} className="d-flex align-items-start flex-column"
                                         style={{ height: "35rem", color: "#6892D5" }}>
-                                        <div class="mb-auto p-2">Upper left</div>
-                                        <div class="p-2">Lower left</div>
+                                        <div className="mb-auto p-2">Upper right</div>
+                                        <div className="p-2">Lower right</div>
+                                    </Col>
+                                    <Col md={10}style={{ height: "35rem" }}>
+                                        <Form className='teethCheckbox'>
+                                            {idUpperTeeth()}
+                                        </Form>
+                                        <img src={require("../Picture/TeethDiagram.png")} className="img-fluid align-self-center" alt="TeethDiagram"
+                                            style={{}} />
+                                        <Form className='teethCheckbox'>
+                                            {idLowerTeeth()}
+                                        </Form>
+                                    </Col>
+                                    <Col md={1} className="d-flex align-items-end flex-column"
+                                        style={{ height: "35rem", color: "#6892D5" }}>
+                                        <div className="mb-auto p-2">Upper left</div>
+                                        <div className="p-2">Lower left</div>
                                     </Col>
                                 </Row>
                             </Container>
                         </Col>
                     </Col>
-                    <Col md={5}>
+                    <Col md={3} >
                         <Tabs
                             defaultActiveKey="history"
                             id="TabsTx"
                             style={{ width: "34rem", marginTop: "3.5rem" }}
-
                         >
                             <Tab eventKey="history" title="History" >
                                 <HistoryTable />
