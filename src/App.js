@@ -6,6 +6,7 @@ import './App.css';
 import TX from './Components/TX';
 import FormPatient from './Components/FormPatient';
 import XRayFilm from './Components/XRayFilm';
+import Opdcard from './Components/Opdcard';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <Route path="/" element={<TX />} />
         <Route path="/patient" element={<TX />} />
         <Route path="/picture" element={<XRayFilm />} />
-        
+        <Route path="/opdcard" element={<Opdcard />} />
       </Routes>
 
     </Router>
