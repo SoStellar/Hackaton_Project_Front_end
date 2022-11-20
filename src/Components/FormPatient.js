@@ -35,11 +35,11 @@ export default function FormPatient() {
           <Col md={10}>
             <Container style={{ marginTop: "2rem" }}>
               <Form className="font-link">
-                <h1 className="mb-5" style={{ color: "#6892D5" }}>เพิ่มประวัติคนไข้</h1>
+                <h1 className="mb-5" style={{ color: "#6892D5", textShadow: "2px 2px 2px #79D1C3" }}>เพิ่มประวัติคนไข้</h1>
                 <Row>
                   <Col xs={12} sm={4}>
                     <Image
-                      src={require("../Picture/exProfile.png")}
+                      src={require("../Picture/exPatient.png")}
                       fluid className="mb-3"
                     ></Image>
                     <Form.Control type="file" size="md" style={{ width: "15rem", marginLeft: "5.5rem", marginBottom: "4rem" }} />
