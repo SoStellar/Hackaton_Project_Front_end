@@ -1,21 +1,25 @@
-import Navbar  from './Components/Navbar';
-import ServiceBar  from './Components/ServiceBar';
-import Opdcard from './Components/opdCard';
-import './App.css';
-import { Row,Col } from 'react-bootstrap';
+import React from 'react';
 
-import Opdcard from './Components/Opdcard';
-import SearchPatient from './Components/SearchPatient';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './Components/Navbar';
+import './App.css';
+import TX from './Components/TX';
+import FormPatient from './Components/FormPatient';
 import XRayFilm from './Components/XRayFilm';
+
 
 function App() {
   return (
-    <>
-    <Navbar />
-    {/* <SearchPatient />
-    <Opdcard /> */}
-    <XRayFilm />
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<TX />} />
+        <Route path="/patient" element={<TX />} />
+        <Route path="/picture" element={<XRayFilm />} />
+        
+      </Routes>
+
+    </Router>
   );
 }
 export default App;
