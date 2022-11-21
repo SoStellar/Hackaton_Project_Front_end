@@ -8,7 +8,7 @@ export default function DatepickerModal() {
             
             <Datepicker
                 theme='ios'
-                controls={['calendar', 'timegrid']}
+                controls={['calendar']}
                 touchUi={false}
                 inputProps={props}
             />

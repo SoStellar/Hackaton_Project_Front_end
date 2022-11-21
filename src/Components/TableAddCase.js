@@ -75,7 +75,7 @@ export default function HistoryTable() {
                                     <Button variant="danger" onClick={handleClose}>
                                         Close
                                     </Button>
-                                    <Button variant="success">Update</Button>
+                                    <Button variant="success" onClick={handleClose}>Update</Button>
                                 </Modal.Footer>
                             </Modal>
                         </td>

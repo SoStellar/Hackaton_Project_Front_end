@@ -102,34 +102,6 @@ export default function TX() {
                                 </Card.Body>
                             </Card>
                         </Col>
-
-                        <Col md={4}>
-                            <Container fluid className='border border-secondary  rounded mt-3 font-link'
-                                style={{ height: "35rem", width: "60rem" }}  >
-                                <Row >
-                                    <Col md={1} className="d-flex align-items-start flex-column"
-                                        style={{ height: "35rem", color: "#6892D5" }}>
-                                        <div className="mb-auto p-2">Upper right</div>
-                                        <div className="p-2">Lower right</div>
-                                    </Col>
-                                    <Col md={10}style={{ height: "35rem" }}>
-                                        <Form className='teethCheckbox'>
-                                            {idUpperTeeth()}
-                                        </Form>
-                                        <img src={require("../Picture/TeethDiagram.png")} className="img-fluid align-self-center" alt="TeethDiagram"
-                                            style={{}} />
-                                        <Form className='teethCheckbox'>
-                                            {idLowerTeeth()}
-                                        </Form>
-                                    </Col>
-                                    <Col md={1} className="d-flex align-items-end flex-column"
-                                        style={{ height: "35rem", color: "#6892D5" }}>
-                                        <div className="mb-auto p-2">Upper left</div>
-                                        <div className="p-2">Lower left</div>
-                                    </Col>
-                                </Row>
-                            </Container>
-                        </Col>
                     </Col>
                     <Col md={3} >
                         <Tabs
@@ -190,7 +162,7 @@ export default function TX() {
                             <Button variant="danger" onClick={handleClose}>
                                 Close
                             </Button>
-                            <Button variant="primary">Add</Button>
+                            <Button variant="primary"  onClick={handleClose}>Add</Button>
                         </Modal.Footer>
                     </Modal>
                 </Row>
