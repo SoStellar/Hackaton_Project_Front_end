@@ -7,24 +7,24 @@ import TX from './Components/TX';
 import FormPatient from './Components/FormPatient';
 import XRayFilm from './Components/XRayFilm';
 import Opdcard from './Components/Opdcard';
-import Appointment from './Components/Appointment';
+import Appointment from './Components/Appointment.js';
+import SearchPatient from './Components/SearchPatient';
 
 
 function App() {
   return (
     <Router>
       <Navbar />
+     
+      {/* <SearchPatient /> */}
       <Routes>
         <Route path="/" element={<TX />} />
-        {/* Routes Navbar */}
-        <Route path="/registerPatient" element={<FormPatient />} />
+        <Route path="/register" element={<FormPatient />} />
         <Route path="/patient" element={<TX />} />
-        <Route path="/appointment" element={<Appointment />} />
-        {/* Routes Service bar */}
-        <Route path="/patient" element={<TX />} />
+        <Route path="/calendar" element={<Appointment />} />
         <Route path="/picture" element={<XRayFilm />} />
         <Route path="/opdcard" element={<Opdcard />} />
-      </Routes>
+      </Routes> 
 
     </Router>
   );
