@@ -38,7 +38,7 @@ export default function Opdcard() {
               }}
               className="font-link"
             >
-              <div style={{ width: "65rem", background: "#C9FDD7" }}>
+              <div  className="border border-info rounded shadow " style={{ width: "65rem", background: "#C9FDD7" }}>
                 <div className="d-flex align-items-end flex-column">
                   <Button className="mb-auto m-3 fw-bold font-link" style={{ backgroundColor: "#6892D5", borderColor: "#6892D5" }} >
                     Edit
