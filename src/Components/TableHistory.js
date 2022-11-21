@@ -4,12 +4,12 @@ import { Table } from "react-bootstrap";
 export default function HistoryTable() {
   return (
     <>
-      <Table striped hover className="text-center" style={{ width: "34rem" }}>
+      <Table striped hover className="text-center">
         <thead style={{backgroundColor: "#6892D5"}}>
           <tr >
             <th>Date</th>
             <th>Service</th>
-            <th>Unit</th>
+            <th>Teeth code</th>
             <th>Comment</th>
           </tr>
         </thead>
@@ -17,7 +17,7 @@ export default function HistoryTable() {
           <tr>
             <td>10/Nov/2022</td>
             <td>ตรวจช่องปาก</td>
-            <td>1</td>
+            <td>All</td>
             <td style={{color : "#5F6C72"}}>เจอฟันผุ 2 ซี่</td>
           </tr>
           <tr>

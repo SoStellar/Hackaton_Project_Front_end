@@ -8,12 +8,12 @@ export default function HistoryTable() {
     const handleShow = () => setShow(true);
     return (
         <>
-            <Table striped fixed hover className="text-center" style={{ width: "34rem" }}>
+            <Table striped fixed hover className="text-center">
                 <thead style={{ backgroundColor: "#6892D5" }}>
                     <tr>
                         <th>Date</th>
                         <th>Service</th>
-                        <th>Unit</th>
+                        <th>Teeth code</th>
                         <th>Comment</th>
                         <th>Edit</th>
                     </tr>
