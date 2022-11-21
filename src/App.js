@@ -19,10 +19,10 @@ function App() {
       <Navbar />
       {/* <SearchPatient /> */}
       {/* <Opdcard /> */}
-      <XRayFilm />
-      <TX />
+      {/* <XRayFilm />
+      <TX /> */}
       <Appointment />
-      <FormPatient />
+      {/* <FormPatient /> */}
 
     </>
   );

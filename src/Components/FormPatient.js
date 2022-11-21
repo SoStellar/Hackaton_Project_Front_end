@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useRef, useState } from "react";
 import {
   Container,
   Form,
@@ -15,6 +15,8 @@ import { HiOutlineUpload } from "react-icons/hi";
 import axios from "axios";
 
 export default function FormPatient() {
+  const [postImage, setPostImage] = useState();
+  const inputFileRef = useRef(null)
   const SubmitHandler = (e) => {
     e.preventDefault();
     axios
@@ -30,6 +32,7 @@ export default function FormPatient() {
         personal_sym: e.target.personal_sym.value,
         drug_allergy: e.target.drug_allergy.value,
         surge: e.target.surge.value,
+        myProfile: postImage,
       })
       .then((response) => {
         console.log(response);
@@ -39,6 +42,20 @@ export default function FormPatient() {
         console.log(error);
       });
   };
+  const fileToBase64 = (filename, filepath) => {
+    return new Promise((resolve) => {
+      var file = new File([filename], filepath);
+      var reader = new FileReader(); // Read file content on file loaded event
+      reader.onload = function (event) {
+        resolve(event.target.result);
+      }; // Convert data to base64
+      reader.readAsDataURL(file);
+    });
+  };
+  const handleChange = async (e) => {
+    setPostImage(await fileToBase64(inputFileRef.current.files[0]))
+  };
+  console.log(postImage);
   return (
     <>
       <Container fluid className={"font-link"} style={{ height: "62.5rem" }}>
@@ -107,6 +124,9 @@ export default function FormPatient() {
                         marginLeft: "5.5rem",
                         marginBottom: "4rem",
                       }}
+                      accept=".jpeg, .png, .jpg"
+                      ref={inputFileRef}
+                      onChange={handleChange}
                     />
                   </Col>
                   <Col xs={12} sm={8}>

@@ -1,42 +1,42 @@
 import axios from "axios";
-import {React, useEffect, useState} from "react";
+import { React, useEffect, useState } from "react";
 import Loading from "./Loading";
 // import ServiceBar from "./ServiceBar";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 export default function Opdcard() {
-  const [opd,setOPD] = useState([]);
-  const [loading,setLoading] = useState([]);
+  const [opd, setOPD] = useState([]);
+  const [loading, setLoading] = useState([]);
   const bdate = moment(opd.birthdate).format('DD/MM/YYYY');
-  const  {citizen_id} = useParams();
+  const { citizen_id } = useParams();
   useEffect(() => {
-    async function getOPD(){
-      try{
+    async function getOPD() {
+      try {
         setLoading(true);
-        const opd = await axios.get(`http://localhost:8000/opd/1103000170208`);
+        const opd = await axios.get(`http://localhost:8000/opd/191`);
         setOPD(opd.data);
       }
-      catch(e){
+      catch (e) {
         console.error(e);
       }
-      finally{
+      finally {
         setLoading(false);
       }
     }
     getOPD();
-  },[]); 
-  
+  }, []);
+
   if (loading) return <Loading />
 
   const editFrom = () => {
 
   }
-  function deleteForm(e){
+  function deleteForm(e) {
     e.preventDefault();
     axios.delete(`http://localhost:8000/opd/delete/${opd.citizen_id}`)
-            .then(() => alert("Delete Complete"))
-            .catch((err) => alert(err));
+      .then(() => alert("Delete Complete"))
+      .catch((err) => alert(err));
   }
   return (
     <>
@@ -65,7 +65,7 @@ export default function Opdcard() {
             <Row>
               <Col sm={12} md={6}>
                 <Image
-                  src={require("../Picture/exProfile.png")}
+                  src={opd.myProfile}
                   fluid
                   roundedCircle
                 />
