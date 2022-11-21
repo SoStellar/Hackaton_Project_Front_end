@@ -18,7 +18,7 @@ export default function SearchPatient() {
     >
       <Stack gap={2}>
         <h1
-          style={{ color: "#6892D5", textShadow: "1px 1px 1px black" }}
+          style={{ color: "#6892D5", textShadow: "2px 2px 2px #79D1C3" }}
           className=""
         >
           Search Patient Information
