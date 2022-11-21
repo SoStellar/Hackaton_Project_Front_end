@@ -4,6 +4,7 @@ import { BsSearch } from "react-icons/bs";
 
 export default function SearchPatient() {
   return (
+    <>
     <Container
       style={{
         marginTop: "1rem",
@@ -32,5 +33,6 @@ export default function SearchPatient() {
         </Stack>
       </Stack>
     </Container>
+    </>
   );
 }

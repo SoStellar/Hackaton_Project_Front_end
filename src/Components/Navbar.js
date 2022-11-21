@@ -22,9 +22,9 @@ export default function CollapsibleExample() {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="justify-content-end flex-grow-1 pe-5">
-                            <Nav.Link href="#register" ><ImProfile /> ลงทะเบียน</Nav.Link>
-                            <Nav.Link href="#patient"><FaUserEdit /> คนไข้</Nav.Link>
-                            <Nav.Link href="#appiontment"><IoCalendar /> ตารางนัด</Nav.Link>
+                            <Nav.Link href="register" ><ImProfile /> ลงทะเบียน</Nav.Link>
+                            <Nav.Link href="patient"><FaUserEdit /> คนไข้</Nav.Link>
+                            <Nav.Link href="calendar"><IoCalendar /> ตารางนัด</Nav.Link>
                         </Nav>
                         <Navbar.Brand href="#Profile">
                             <img
