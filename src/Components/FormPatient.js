@@ -19,16 +19,16 @@ export default function FormPatient() {
     e.preventDefault();
     axios
       .post(`http://localhost:8000/opd/`, {
-        // client_id: Math.floor(Math.random() * 1000000),
+        client_id: Math.floor(Math.random() * 1000000),
         title: e.target.title.value,
         fname: e.target.fname.value,
         lname: e.target.lname.value,
         birthdate: e.target.bdate.value,
         citizen_id: e.target.citizen_id.value,
         tel: e.target.tel.value,
-        address: e.target.tel.value,
+        address: e.target.address.value,
         personal_sym: e.target.personal_sym.value,
-        drug_allergy: e.target.drug_allergy,
+        drug_allergy: e.target.drug_allergy.value,
         surge: e.target.surge.value,
       })
       .then((response) => {
@@ -111,26 +111,24 @@ export default function FormPatient() {
                   </Col>
                   <Col xs={12} sm={8}>
                     <Row className="mb-3 ">
-                      <Form.Group as={Col} controlId="formGridTitle">
+                      <Form.Group as={Col}>
                         <FloatingLabel
-                          controlId="floatingTitle"
                           label="คำนำหน้า"
                         >
                           <Form.Select
                             style={{ width: "7rem", background: "#C9FDD7" }}
                             id="title"
                           >
-                            <option value="1">นาย</option>
-                            <option value="2">นาง</option>
-                            <option value="3">นางสาว</option>
-                            <option value="4">ด.ช.</option>
-                            <option value="5">ด.ญ.</option>
+                            <option value="นาย">นาย</option>
+                            <option value="นาง">นาง</option>
+                            <option value="นางสาว">นางสาว</option>
+                            <option value="ด.ช.">ด.ช.</option>
+                            <option value="ด.ญ.">ด.ญ.</option>
                           </Form.Select>
                         </FloatingLabel>
                       </Form.Group>
-                      <Form.Group as={Col} controlId="formGridFname">
+                      <Form.Group as={Col} >
                         <FloatingLabel
-                          controlId="floatingFname"
                           className="justify-content-start"
                           label="ชื่อจริง"
                         >
@@ -155,9 +153,8 @@ export default function FormPatient() {
                           />
                         </FloatingLabel>
                       </Form.Group>
-                      <Form.Group as={Col} controlId="fromGridBD">
+                      <Form.Group as={Col}>
                         <FloatingLabel
-                          controlId="floatingBD"
                           label="ว/ด/ป เกิด"
                         >
                           <Form.Control
@@ -169,9 +166,9 @@ export default function FormPatient() {
                       </Form.Group>
                     </Row>
                     <Row className="mb-3">
-                      <Form.Group as={Col} controlId="fromGridID">
+                      <Form.Group as={Col}>
                         <FloatingLabel
-                          controlId="floatingIDcard"
+
                           label="เลขบัตรปชช/พาสสปอร์ต"
                         >
                           <Form.Control
@@ -184,9 +181,9 @@ export default function FormPatient() {
                       </Form.Group>
                     </Row>
                     <Row className="mb-3">
-                      <Form.Group as={Col} controlId="fromGridAddress">
+                      <Form.Group as={Col}>
                         <FloatingLabel
-                          controlId="floatingAddress"
+
                           label="ที่อยู่"
                         >
                           <Form.Control
@@ -208,9 +205,8 @@ export default function FormPatient() {
                           ></Form.Control>
                         </FloatingLabel>
                       </Form.Group>
-                      <Form.Group as={Col} controlId="fromGridPhone">
+                      <Form.Group as={Col}>
                         <FloatingLabel
-                          controlId="floatingPhone"
                           label="เบอร์โทร"
                         >
                           <Form.Control
@@ -223,9 +219,9 @@ export default function FormPatient() {
                       </Form.Group>
                     </Row>
                     <Row className="mb-3">
-                      <Form.Group as={Col} controlId="fromGridSymtoms">
+                      <Form.Group as={Col}>
                         <FloatingLabel
-                          controlId="floatingSymtoms"
+
                           label="โรคประจำตัว"
                         >
                           <Form.Control
@@ -236,9 +232,9 @@ export default function FormPatient() {
                           ></Form.Control>
                         </FloatingLabel>
                       </Form.Group>
-                      <Form.Group as={Col} controlId="fromGridTX">
+                      <Form.Group as={Col}>
                         <FloatingLabel
-                          controlId="floatingTX"
+
                           label="ประวัติการแพ้ยา"
                         >
                           <Form.Control
@@ -251,9 +247,9 @@ export default function FormPatient() {
                       </Form.Group>
                     </Row>
                     <Row className="mb-3">
-                      <Form.Group as={Col} controlId="formGridSurge">
+                      <Form.Group as={Col}>
                         <FloatingLabel
-                          controlId="floatingSurge"
+
                           label="ประวัติการผ่าตัด"
                         >
                           <Form.Control

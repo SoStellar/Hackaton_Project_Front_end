@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Table, Button, Modal, Container, Row, Col, Card, ListGroup } from "react-bootstrap";
 import Datepicker from "./Datepicker";
 import { BiEdit } from 'react-icons/bi';
@@ -6,6 +6,16 @@ export default function HistoryTable() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [tx, setTX] = useState([]);
+
+    // useEffect(() => {
+    //     async function getOPD() {
+    //         try {
+
+    //         }
+    //       setTX(tx.data);
+    //     }
+    // }, []);
     return (
         <>
             <Table striped fixed hover className="text-center" style={{ width: "34rem" }}>
@@ -24,9 +34,10 @@ export default function HistoryTable() {
                         <td>ตรวจช่องปาก</td>
                         <td>1</td>
                         <td style={{ color: "#5F6C72" }}>เจอฟันผุ 2 ซี่</td>
-                        <td> <Button variant="danger" onClick={handleShow}>
-                            <BiEdit />
-                        </Button>
+                        <td>
+                            <Button variant="danger" onClick={handleShow}>
+                                <BiEdit />
+                            </Button>
                             <Modal
                                 show={show}
                                 onHide={handleClose}
@@ -35,14 +46,14 @@ export default function HistoryTable() {
                                 style={{ marginTop: "8rem" }}
                             >
                                 <Modal.Header closeButton>
-                                    <Modal.Title style={{ color: "#6892D5",fontSize:"36px" }}>Add Case</Modal.Title>
+                                    <Modal.Title style={{ color: "#6892D5", fontSize: "36px" }}>Add Case</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body >
                                     <Container>
                                         <Row>
                                             <Col xs={12} md={8}>
                                                 <h4 className="mb-3" style={{ color: "#6892D5" }} >Date picker</h4>
-                                                <Datepicker style={{ color: "#6892D5" }} />
+                                                <Datepicker style={{ color: "#6892D5" }} id="case_date" />
                                             </Col>
                                             <Col xs={6} md={4}>
                                                 <Card className='font-link ms-5' style={{ width: '10rem', }}>
