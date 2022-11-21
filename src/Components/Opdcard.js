@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ServiceBar from "./ServiceBar";
 import SearchPatient from "./SearchPatient";
 import { Container, Row, Col, Button, Image, Stack, Nav } from "react-bootstrap";
 
 export default function Opdcard() {
+
+  const [userId, setUserId] = useState("");
+
+  console.log(userId);
+
   return (
     <>
       <Container fluid className={"font-link"} style={{ height: "62.5rem" }} >
@@ -25,7 +30,7 @@ export default function Opdcard() {
             </Stack>
           </Col>
           <Col md={9} className="ms-5">
-            <SearchPatient className="mt-3" />
+            <SearchPatient className="mt-3" setUserId={setUserId} />
             <Container
               style={{
                 marginTop: "3rem",
@@ -38,7 +43,7 @@ export default function Opdcard() {
               }}
               className="font-link"
             >
-              <div  className="border border-info rounded shadow " style={{ width: "65rem", background: "#C9FDD7" }}>
+              <div className="border border-info rounded shadow " style={{ width: "65rem", background: "#C9FDD7" }}>
                 <div className="d-flex align-items-end flex-column">
                   <Button className="mb-auto m-3 fw-bold font-link" style={{ backgroundColor: "#6892D5", borderColor: "#6892D5" }} >
                     Edit
