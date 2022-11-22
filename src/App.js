@@ -9,6 +9,7 @@ import XRayFilm from './Components/XRayFilm';
 import Opdcard from './Components/Opdcard';
 import Appointment from './Components/Appointment.js';
 import SearchPatient from './Components/SearchPatient';
+import Home from './Components/Home';
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<TX />} />
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<FormPatient />} />
         <Route path="/patient" element={<TX />} />
         {/* <Route path="/treatment" element={<TX />} /> */}
