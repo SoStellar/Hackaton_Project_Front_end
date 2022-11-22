@@ -21,9 +21,10 @@ function App() {
         <Route path="/" element={<TX />} />
         <Route path="/register" element={<FormPatient />} />
         <Route path="/patient" element={<TX />} />
+        {/* <Route path="/treatment" element={<TX />} /> */}
         <Route path="/calendar" element={<Appointment />} />
         <Route path="/picture" element={<XRayFilm />} />
-        <Route path="/opdcard" element={<Opdcard />} />
+        <Route path="/searchPatients" element={<Opdcard />} />
       </Routes> 
 
     </Router>
