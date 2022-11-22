@@ -15,3 +15,7 @@ code {
 .font-link {
   font-family: 'Kanit', sans-serif;
 }
+
+.hide-container {
+  display: none;
+}

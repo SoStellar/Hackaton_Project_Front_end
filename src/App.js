@@ -15,8 +15,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-     
-      {/* <SearchPatient /> */}
+
       <Routes>
         <Route path="/" element={<TX />} />
         <Route path="/register" element={<FormPatient />} />
@@ -25,7 +24,7 @@ function App() {
         <Route path="/calendar" element={<Appointment />} />
         <Route path="/picture" element={<XRayFilm />} />
         <Route path="/searchPatients" element={<Opdcard />} />
-      </Routes> 
+      </Routes>
 
     </Router>
   );
