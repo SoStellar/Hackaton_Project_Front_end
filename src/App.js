@@ -19,9 +19,9 @@ function App() {
       <Navbar />
       {/* <SearchPatient /> */}
       {/* <Opdcard /> */}
-      {/* <XRayFilm />
-      <TX /> */}
-      <Appointment />
+      <XRayFilm />
+      {/* <TX /> */}
+      {/* <Appointment /> */}
       {/* <FormPatient /> */}
 
     </>

@@ -1,11 +1,12 @@
 import axios from "axios";
-import { React, useEffect, useState } from "react";
-import { Carousel, Container, Row, Col, Form, Image } from "react-bootstrap";
+import { React, useEffect, useState, useRef } from "react";
+import { Carousel, Container, Row, Col, Form, Image, Button } from "react-bootstrap";
 import Loading from "./Loading";
 export default function XRayFilm() {
   const [xRayFilm, setxRayFilm] = useState([]);
   const [loading, setLoading] = useState([]);
-
+  const [postImage, setPostImage] = useState();
+  const inputFileRef = useRef(null)
   useEffect(() => {
     async function getxRayfilm() {
       try {
@@ -23,7 +24,27 @@ export default function XRayFilm() {
     getxRayfilm();
   }, []);
 
-  console.log(xRayFilm);
+  const SubmitHandler = (e) => {
+    e.preventDefault();
+    axios.put(`http://localhost:8000/tx/updateArray/100?update=xray_film`, {
+      value: postImage
+    })
+    window.location.reload();
+  }
+  const fileToBase64 = (filename, filepath) => {
+    return new Promise((resolve) => {
+      var file = new File([filename], filepath);
+      var reader = new FileReader(); // Read file content on file loaded event
+      reader.onload = function (event) {
+        resolve(event.target.result);
+      }; // Convert data to base64
+      reader.readAsDataURL(file);
+    });
+  };
+  const handleChange = async (e) => {
+    setPostImage(await fileToBase64(inputFileRef.current.files[0]))
+  };
+  console.log(postImage);
 
   if (loading) return <Loading />
   return (
@@ -51,9 +72,12 @@ export default function XRayFilm() {
               Upload File
             </h1>
           </Row>
-          <Form>
+          <Form onSubmit={SubmitHandler}>
             <Image src={require("../Picture/filefolder.png")} fluid></Image>
-            <Form.Control type="file" multiple />
+            <Form.Control type="file" multiple accept=".jpeg, .png, .jpg"
+              ref={inputFileRef}
+              onChange={handleChange} />
+            <Button type="submit">Confirm</Button>
           </Form>
         </Col>
       </Row>
