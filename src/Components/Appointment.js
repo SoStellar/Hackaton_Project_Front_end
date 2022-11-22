@@ -6,18 +6,17 @@ import TimelinePage from './Timeline.js'
 export default function Appointment() {
     return (
         <>
-            <Container fluid className="font-link">
+            <Container fluid className="font-link" style={{marginTop: "2rem"}}>
                 <Row >
-                    <Col md={4} style={{ backgroundColor: "##C9FDD7" }}>
-                        <h3 className="mt-2 ms-5 " style={{ color: "#6892D5", fontSize: "36px", textShadow: "5px" }}> ตารางนัด </h3>
-                        <Container fluid className="border border-info rounded shadow ms-5 pt-3" style={{ height: "30rem", backgroundColor: "#C9FDD7" }} >
+                    <Col md={12} sm={12} style={{ backgroundColor: "##C9FDD7" }}>
+                        <h1 className="mt-2  mb-5 " 
+                        style={{ color: "#6892D5",
+                        textShadow: "2px 2px 2px #79D1C3",marginLeft:"12rem" }}>
+                             ตารางนัด 
+                             </h1>
+                        <Container fluid className="border border-info rounded shadow pt-3 pb-3"
+                         style={{ height: "auto", backgroundColor: "#C9FDD7" }} >
                             <TimelinePage />
-                        </Container>
-
-                    </Col>
-                    <Col md={8}>
-                        <Container fluid className="border border-info rounded shadow ms-5 pt-3" style={{ width: "52rem", height: "30rem", marginTop: "3.5rem", backgroundColor: "#C9FDD7" }}>
-                            <LoadEvents />
                         </Container>
                     </Col>
                 </Row>

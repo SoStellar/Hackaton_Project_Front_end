@@ -95,7 +95,9 @@ export default function TX() {
                     </Col>
                     <Col md={10}>
 
-                        <Card className='mt-2 rounded' style={{ display: 'flex', flexDirection: 'row', width: '24rem', backgroundColor: "#C9FDD7" }}>
+                        <Card className='mt-2 rounded' 
+                        style={{ display: 'flex', flexDirection: 'row',
+                         width: '24rem', backgroundColor: "#C9FDD7" }}>
                             <Card.Img
                                 variant='left'
                                 src={require('../Picture/exPatient.png')}
@@ -120,7 +122,8 @@ export default function TX() {
                             </Tab>
                             <Tab eventKey="addCase" title="Add case">
                                 <AddCaseTable />
-                                <Button className='bg-white text-center position-absolute top-50 start-50 translate-middle-x'
+                                <Button 
+                                className='bg-white text-center position-absolute top-50 start-50 translate-middle-x'
                                     style={{
                                         borderRadius: "3rem", borderColor: "#6892D5",
                                         borderWidth: "2px", color: "#6892D5",
@@ -146,7 +149,10 @@ export default function TX() {
                                 <Container>
                                     <Row>
                                         <Col xs={12} md={8}>
-                                            <h3 className="mb-3 font-link" style={{ color: "#79D1C3", textShadow: "1px 1px 1px #6892D5" }} >วันที่</h3>
+                                            <h3 className="mb-3 font-link" 
+                                            style={{ color: "#79D1C3", textShadow: "1px 1px 1px #6892D5" }} >
+                                                วันที่
+                                                </h3>
                                             <Datepicker id="date" style={{ color: "#6892D5" }} />
                                             <Container fluid className='border border-primary  rounded mt-3 font-link'
                                                 style={{ height: "35rem", width: "40rem" }}  >
