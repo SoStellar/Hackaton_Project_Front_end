@@ -12,17 +12,30 @@ export default function Opdcard() {
   const bdate = moment(opd.birthdate).format('DD/MM/YYYY');
   const [user, setUser] = useState("");
   const [show, setShow] = useState(false);
+  const [drug, setDrug] = useState("");
+  const [sym, setSym] = useState("");
+  const [surge, setSurge] = useState("");
+  const [loadCheck, setLoadCheck] = useState(false);
+
 
   useEffect(() => {
 
     async function getOPD() {
       try {
+        setLoadCheck(false);
+
         // setLoading(true);
         const opd = await axios.get(`http://localhost:8000/opd/${user}`);
         setOPD(opd.data);
+        setDrug(opd.data.drug_allergy)
+        setSym(opd.data.personal_sym)
+        setSurge(opd.data.surge)
       }
       catch (e) {
         console.error(e);
+      } finally {
+        setLoadCheck(true);
+
       }
       // finally {
       //   setLoading(false);
@@ -103,13 +116,15 @@ export default function Opdcard() {
                         <Col><div className="d-inline" style={{ color: '#6892D5' }}>ที่อยู่: </div><div className="d-inline">{opd.address}</div></Col>
                       </Row>
                       <Row className="py-3">
-                        <Col><div className="d-inline" style={{ color: '#6892D5' }}>โรคประจำตัว: </div><div className="d-inline">{opd.personal_sym}</div></Col>
+                        <Col><div className="d-inline" style={{ color: '#6892D5' }}>โรคประจำตัว: </div><div className="d-inline">{!loadCheck ? ("") : (`${sym}`)}</div></Col>
                       </Row>
                       <Row className="py-3">
-                        <Col><div className="d-inline" style={{ color: '#6892D5' }}>ประวัติการแพ้ยา: </div><div className="d-inline">{opd.drug_allergy}</div></Col>
+                        <Col><div className="d-inline" style={{ color: '#6892D5' }}>ประวัติการแพ้ยา: </div><div className="d-inline">{
+                          !loadCheck ? ("") : (`${drug}`)
+                        }</div></Col>
                       </Row>
                       <Row className="py-3">
-                        <Col><div className="d-inline" style={{ color: '#6892D5' }}>ประวัติการผ่าตัด: </div><div className="d-inline">{opd.surge}</div></Col>
+                        <Col><div className="d-inline" style={{ color: '#6892D5' }}>ประวัติการผ่าตัด: </div><div className="d-inline">{!loadCheck ? ("") : (`${surge}`)}</div></Col>
                       </Row>
                     </Col>
                   </Row>
