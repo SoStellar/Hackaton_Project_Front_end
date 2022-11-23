@@ -1,78 +1,71 @@
-import { React, useState } from 'react';
-import { Container, Stack, Nav, Row, Col, Tab, Tabs, Card, Button, Modal, ListGroup, Form, Dropdown } from 'react-bootstrap';
+import { React, useState, useEffect } from 'react';
+import { Container, Stack, Nav, Row, Col, Tab, Tabs, Card, Button, Modal, ListGroup, Form, Dropdown, Table } from 'react-bootstrap';
 import HistoryTable from './TableHistory';
 import AddCaseTable from './TableAddCase';
 import Datepicker from './Datepicker';
 import { HiPlus } from 'react-icons/hi';
-
-
+import axios from 'axios';
 
 export default function TX() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [txshow, setTxshow] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    
+    const [teeth_code, setTeethcode] = useState([]);
+    const [treat, setTreat] = useState("");
+    const [comment, setComment] = useState("");
+    const [cure_date, setCureDate] = useState("");
+
+    const [x, setx] = useState(0);
+    const [y, sety] = useState([]);
+    let teethCodeArray = [];
+
+    useEffect(() => {
+        async function getTX() {
+            try {
+                setLoading(false);
+                const tx = await axios.get(
+                    `http://localhost:8000/tx/100`
+                );
+                setTxshow(tx.data);
+            } catch (e) {
+                console.error(e);
+            } finally {
+                setLoading(true);
+            }
+        }
+        getTX();
+    }, []);
 
 
-    const [serviceList, setServiceList] = useState([{ id: "อุดฟัน", value: "อุดฟัน" }, { id: "ถอนฟัน", value: "ถอนฟัน" }, { id: "ขูดหินปูน", value: "ขูดหินปูน" },
-    { id: "รักษารากฟัน", value: "รักษารากฟัน" }, { id: "ฟอกฟันขาว", value: "ฟอกฟันขาว" }])
-    const [teethCodeList, setTeethCodeList] = useState([{ id: 1, value: 1 }, { id: 2, value: 2 }, { id: 3, value: 3 }, { id: 4, value: 4 }, { id: 5, value: 5 }, { id: 6, value: 6 },
-    { id: 7, value: 7 }, { id: 8, value: 8 }, { id: 9, value: 9 }, { id: 10, value: 10 }, { id: 11, value: 11 }, { id: 12, value: 12 },
-    { id: 13, value: 13 }, { id: 14, value: 14 }, , { id: 15, value: 15 }, { id: 16, value: 16 }, { id: 17, value: 17 }, { id: 18, value: 18 },
-    { id: 19, value: 19 }, { id: 20, value: 20 }, { id: 21, value: 22 }, { id: 23, value: 23 }, { id: 24, value: 24 }, { id: 25, value: 25 },
-    { id: 26, value: 26 }, { id: 27, value: 27 }, { id: 28, value: 28 }, { id: 29, value: 29 }, { id: 30, value: 30 }, { id: 31, value: 31 }, { id: 32, value: 32 }])
-
-
-
-    const IdTeethCode = () => {
-        return (
-            <>
-                {
-                    teethCodeList.map(
-                        (code, i) => {
-                            return (
-                                <option
-                                    aria-label="Default select example"
-                                    className='font-link'
-                                    id={`teeth-code-` + { code }}
-                                    key={`TeethCode` + code.id}
-
-                                > {code.value} </option>
-                            )
-                        }
-                    )
-
-                }
-
-            </>
-        )
+    const SubmitHandler = () => {
+        axios.post(`http://localhost:8000/tx`, {
+            client_id: 100,
+            cure_date: cure_date,
+            teeth_po: y,
+            treat: treat,
+            comment: comment
+        })
+            .then((response) => {
+                console.log(response);
+                alert("Add Complete");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+    const addInTeethArray = (e) => {
+        teethCodeArray = y;
+        teethCodeArray.push(x);
+        sety(teethCodeArray);
+        console.log(teethCodeArray)
     }
 
-    const IdService = () => {
-        return (
-            <>
-                {
-                    serviceList.map(
-                        (service, i) => {
-                            return (
-                                <option
-                                    className='font-link'
-                                    id={`teeth-code-` + { service }}
-                                    key={`TeethCode` + service.id}
+    console.log(loading);
+    if (loading) console.log(txshow);
 
-                                > {service.value} </option>
-                            )
-                        }
-                    )
-
-                }
-
-            </>
-        )
-    }
-
-    console.log('TxPage')
     return (
         <>
             <Container fluid className="font-link" style={{ height: "62.5rem" }} >
@@ -116,10 +109,51 @@ export default function TX() {
 
                         >
                             <Tab eventKey="history" title="History" >
-                                <HistoryTable />
+                                <Table striped hover className="text-center">
+                                    <thead style={{ backgroundColor: "#6892D5" }}>
+                                        <tr >
+                                            <th>Date</th>
+                                            <th>Service</th>
+                                            <th>Teeth code</th>
+                                            <th>Comment</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {loading ? (
+                                            <>
+                                                {txshow.map((data) => (
+                                                    <HistoryTable key={data.client_id} item={data} />
+                                                ))}
+                                            </>
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </tbody>
+                                </Table>
                             </Tab>
                             <Tab eventKey="addCase" title="Add case">
-                                <AddCaseTable />
+                                <Table striped hover className="text-center">
+                                    <thead style={{ backgroundColor: "#6892D5" }}>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Service</th>
+                                            <th>Teeth code</th>
+                                            <th>Comment</th>
+                                            <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        {loading ? (
+                                            <>
+                                                {txshow.map((data) => (
+                                                    <AddCaseTable key={data.client_id} item={data} />
+                                                ))}
+                                            </>
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </tbody>
+                                </Table>
                                 <Button className='bg-white text-center position-absolute top-50 start-50 translate-middle-x'
                                     style={{
                                         borderRadius: "3rem", borderColor: "#6892D5",
@@ -131,81 +165,123 @@ export default function TX() {
                                 </Button>
                             </Tab>
                         </Tabs>
+                        <Form>
+                            <Modal
+                                show={show}
+                                onHide={handleClose}
+                                keyboard={false}
+                                size="xl"
+                            >
+                                <Modal.Header closeButton>
+                                    <Modal.Title style={{ color: "#6892D5" }}>Add Case</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body >
 
-                        <Modal
-                            show={show}
-                            onHide={handleClose}
-                            keyboard={false}
-                            size="xl"
-                            
-                        >
-                            <Modal.Header closeButton>
-                                <Modal.Title style={{ color: "#6892D5" }}>Add Case</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body >
-                                <Container>
-                                    <Row>
-                                        <Col xs={12} md={8}>
-                                            <h3 className="mb-3 font-link" style={{ color: "#79D1C3", textShadow: "1px 1px 1px #6892D5" }} >วันที่</h3>
-                                            <Datepicker id="date" style={{ color: "#6892D5" }} />
-                                            <Container fluid className='border border-primary  rounded mt-3 font-link'
-                                                style={{ height: "35rem", width: "40rem" }}  >
-                                                <Row >
-                                                    <img src={require("../Picture/toothnumberingLR.jpg")}
-                                                        className="img-fluid align-self-center" alt="TeethDiagram"
-                                                    />
-                                                </Row>
-                                            </Container>
-                                        </Col>
-                                        <Col xs={6} md={4}>
-                                            <h3 className="mb-3 font-link" style={{ color: "#79D1C3", textShadow: "1px 1px 1px #6892D5" }} >ตำแหน่งฟัน</h3>
-                                            <Form.Select 
-                                            className='pre-scrollable fw-bold'
-                                            aria-label="Default select example" 
-                                            style={{ backgroundColor: "#C9FDD7", borderColor: "#79D1C3",
-                                             color: "#5F6C72", maxHeight: "150px", overflowY: "auto",width: "8.5rem" }}>
-                                                 <option>Select code</option>
-                                                <IdTeethCode />
-                                            </Form.Select>
+                                    <Container>
+                                        <Row>
+                                            <Col xs={12} md={8}>
+                                                <h3 className="mb-3 font-link" style={{ color: "#79D1C3", textShadow: "1px 1px 1px #6892D5" }} >วันที่</h3>
+                                                <Form.Control type="date" placeholder="วว/ดด/ปป" style={{ background: '#C9FDD7' }} id="cure_date" required onChange={(e) => setCureDate(e.target.value)} />
+                                                <Container fluid className='border border-primary  rounded mt-3 font-link'
+                                                    style={{ height: "35rem", width: "40rem" }}  >
+                                                    <Row >
+                                                        <img src={require("../Picture/toothnumberingLR.jpg")}
+                                                            className="img-fluid align-self-center" alt="TeethDiagram"
+                                                        />
+                                                    </Row>
+                                                </Container>
+                                            </Col>
+                                            <Col xs={6} md={4}>
+                                                <h3 className="mb-3 font-link" style={{ color: "#79D1C3", textShadow: "1px 1px 1px #6892D5" }} >ตำแหน่งฟัน</h3>
+                                                <Form.Select
+                                                    className='pre-scrollable fw-bold'
+                                                    aria-label="Default select example"
+                                                    style={{
+                                                        backgroundColor: "#C9FDD7", borderColor: "#79D1C3",
+                                                        color: "#5F6C72", maxHeight: "150px", overflowY: "auto", width: "8.5rem"
+                                                    }}
+                                                    id="teeth_po"
+                                                    onChange={(e) => setx(e.target.value)}
+                                                >
+                                                    <option>เลือกตำแหน่งฟันที่ทำ</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                    <option value="32">32</option>
+                                                </Form.Select>
 
-                                            <Button className='text-center m-2'
-                                                style={{
-                                                    borderRadius: "3rem", borderColor: "#6892D5", backgroundColor: "#6892D5",
-                                                    borderWidth: "2px", color: "white",
-                                                }}
-                                                value={'input'}
-                                                onClick={<IdTeethCode />}>
-                                                <HiPlus />
-                                            </Button>
-                                            <h3 className="mb-3 font-link" style={{ color: "#79D1C3", textShadow: "1px 1px 1px #6892D5" }} >บริการ</h3>
-                                            <Form.Select 
-                                            className='pre-scrollable font-link fw-bold'
-                                            aria-label="Default select example" 
-                                            style={{ backgroundColor: "#C9FDD7", borderColor: "#79D1C3",
-                                             color: "#5F6C72", maxHeight: "100px", overflowY: "auto",width: "9.5rem" }}>
-                                                 <option>Select service</option>
-                                                <IdService />
-                                            </Form.Select>
-                                            <Form>
-
+                                                <Button className='text-center m-2'
+                                                    style={{
+                                                        borderRadius: "3rem", borderColor: "#6892D5", backgroundColor: "#6892D5",
+                                                        borderWidth: "2px", color: "white",
+                                                    }}
+                                                    onClick={addInTeethArray}>
+                                                    <HiPlus />
+                                                </Button>
+                                                <h3 className="mb-3 font-link" style={{ color: "#79D1C3", textShadow: "1px 1px 1px #6892D5" }} >บริการ</h3>
+                                                <Form.Select
+                                                    className='pre-scrollable font-link fw-bold'
+                                                    aria-label="Default select example"
+                                                    style={{
+                                                        backgroundColor: "#C9FDD7", borderColor: "#79D1C3",
+                                                        color: "#5F6C72", maxHeight: "100px", overflowY: "auto", width: "9.5rem"
+                                                    }}
+                                                    id="treat"
+                                                    onChange={e => setTreat(e.target.value)}
+                                                    required
+                                                >
+                                                    <option>เลือกบริการ</option>
+                                                    <option value="อุดฟัน">อุดฟัน</option>
+                                                    <option value="ถอดฟัน">ถอดฟัน</option>
+                                                    <option value="รักษารากฟัน">รักษารากฟัน</option>
+                                                    <option value="ขูดหินปูน">ขูดหินปูน</option>
+                                                    <option value="ฟอกฟันขาว">ฟอกฟันขาว</option>
+                                                </Form.Select>
                                                 <Form.Group className="mt-4 fw-bold" controlId="exampleForm.ControlTextarea1">
                                                     <Form.Label>Comment</Form.Label>
-                                                    <Form.Control as="textarea" className='font-link' rows={3} />
+                                                    <Form.Control as="textarea" className='font-link' rows={3} id="comment"
+                                                        onChange={e => setComment(e.target.value)} />
                                                 </Form.Group>
-                                            </Form>
-
-
-                                        </Col>
-                                    </Row>
-                                </Container>
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button variant="danger" onClick={handleClose}>
-                                    Close
-                                </Button>
-                                <Button variant="primary" onClick={handleClose}>Add</Button>
-                            </Modal.Footer>
-                        </Modal>
+                                            </Col>
+                                        </Row>
+                                    </Container>
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button variant="danger" onClick={handleClose}>
+                                        Close
+                                    </Button>
+                                    <Button variant="primary" type="submit" onClick={SubmitHandler} >Add</Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </Form>
                     </Col>
 
 
