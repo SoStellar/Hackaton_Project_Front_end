@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Nav, Navbar, NavDropdown,  } from 'react-bootstrap';
-import {Tab,Tabs} from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown, } from 'react-bootstrap';
+import { Tab, Tabs } from 'react-bootstrap';
 import { ImProfile } from "react-icons/im";
 import { FaUserEdit } from "react-icons/fa";
 import { IoCalendar } from "react-icons/io5";
@@ -9,7 +9,7 @@ export default function CollapsibleExample() {
         <>
             <Navbar collapseOnSelect expand="lg" className={"font-link"} sticky="top" style={{ backgroundColor: "#79D1C3", color: "#6892D5" }} >
                 <Container>
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand href="/">
                         <img
                             src={require('../Picture/TestLogo.png')}
                             width="80"
@@ -23,7 +23,7 @@ export default function CollapsibleExample() {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="justify-content-end flex-grow-1 pe-5">
                             <Nav.Link href="register" ><ImProfile /> ลงทะเบียน</Nav.Link>
-                            <Nav.Link href="patient"><FaUserEdit /> คนไข้</Nav.Link>
+                            {/* <Nav.Link href="patient"><FaUserEdit /> คนไข้</Nav.Link> */}
                             <Nav.Link href="calendar"><IoCalendar /> ตารางนัด</Nav.Link>
                         </Nav>
                         <Navbar.Brand href="#Profile">
@@ -43,7 +43,7 @@ export default function CollapsibleExample() {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-    
+
 
 
 

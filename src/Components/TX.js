@@ -5,6 +5,7 @@ import AddCaseTable from './TableAddCase';
 import Datepicker from './Datepicker';
 import { HiPlus } from 'react-icons/hi';
 import axios from 'axios';
+import { useParams, Link } from 'react-router-dom';
 
 export default function TX() {
     const [show, setShow] = useState(false);
@@ -12,7 +13,8 @@ export default function TX() {
     const handleShow = () => setShow(true);
     const [txshow, setTxshow] = useState([]);
     const [loading, setLoading] = useState(false);
-
+    let { citizen_id } = useParams();
+    const [user, setUser] = useState("");
     const [teeth_code, setTeethcode] = useState([]);
     const [treat, setTreat] = useState("");
     const [comment, setComment] = useState("");
@@ -26,8 +28,13 @@ export default function TX() {
         async function getTX() {
             try {
                 setLoading(false);
+                const opd = await axios.get(
+                    `http://localhost:8000/opd/${citizen_id}`
+                )
+                setUser(opd.data.client_id);
+                console.log(user)
                 const tx = await axios.get(
-                    `http://localhost:8000/tx/100`
+                    `http://localhost:8000/tx/${user}`
                 );
                 setTxshow(tx.data);
             } catch (e) {
@@ -42,7 +49,7 @@ export default function TX() {
 
     const SubmitHandler = () => {
         axios.post(`http://localhost:8000/tx`, {
-            client_id: 100,
+            client_id: user,
             cure_date: cure_date,
             teeth_po: y,
             treat: treat,
