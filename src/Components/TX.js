@@ -30,7 +30,7 @@ export default function TX() {
             try {
                 setLoading(false);
                 const opd = await axios.get(
-                    `http://localhost:8000/opd/${citizen_id}`
+                    `http://localhost:8000/opd/100`
                 )
                 setOPD(opd.data)
                 setUser(opd.data.client_id);
@@ -82,7 +82,7 @@ export default function TX() {
                 <Row >
                     <Col md={2} style={{ width: "7.5rem", marginTop: "4.5rem" }} >
                         <Stack gap={0} className="text-center  mt-5 pt-5">
-                            <Nav.Link href={`treatment/${opdX.client_id}`} className='border-info rounded-top pt-5'
+                            <Nav.Link href="treatment" className='border-info rounded-top pt-5'
                                 style={{ height: "7.5rem", backgroundColor: "#C9FDD7", color: "#6892D5" }}>
                                 ข้อมูลการรักษา
                             </Nav.Link>

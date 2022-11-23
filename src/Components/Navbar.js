@@ -18,7 +18,7 @@ export default function CollapsibleExample() {
                             alt="logoSmileDent"
                         />
                     </Navbar.Brand>
-                    <Navbar.Brand href="#home" style={{ fontSize: "48px", color: "#6892D5" }} >SmileDent.</Navbar.Brand>
+                    <Navbar.Brand href="/" style={{ fontSize: "48px", color: "#6892D5" }} >SmileDent.</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="justify-content-end flex-grow-1 pe-5">

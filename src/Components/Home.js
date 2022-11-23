@@ -35,7 +35,7 @@ export default function Home() {
                                             width: "auto", height: "auto", backgroundColor: "#6892D5"
                                         }}>
                                         <Card.Body className='ms-10'>
-                                            <Card.Link href="treatment/100" className="text-center"
+                                            <Card.Link href="treatment" className="text-center"
                                                 style={{ color: "white", fontSize: "32px" }}>
                                                 <FaUserEdit style={{ width: "auto", height: "auto" }} /> <br /> คนไข้ </Card.Link>
                                         </Card.Body>

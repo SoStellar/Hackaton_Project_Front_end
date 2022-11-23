@@ -27,7 +27,7 @@ export default function XRayFilm() {
 
   const SubmitHandler = (e) => {
     e.preventDefault();
-    axios.put(`http://localhost:8000/tx/updateArray/100?update=xray_film`, {
+    axios.put(`http://localhost:8000/tx/updateArray/3000?update=xray_film`, {
       value: postImage
     })
     window.location.reload();
@@ -52,7 +52,7 @@ export default function XRayFilm() {
         <Row>
           <Col md={3} style={{ width: "7.5rem", marginTop: "4.5rem" }} >
             <Stack gap={0} className="text-center  mt-5 pt-5">
-              <Nav.Link href="treatment/3000" className='rounded-top pt-5'
+              <Nav.Link href="treatment" className='rounded-top pt-5'
                 style={{ height: "7.5rem", backgroundColor: "#C9FDD7", color: "#6892D5" }}>
                 ข้อมูลการรักษา
               </Nav.Link>
