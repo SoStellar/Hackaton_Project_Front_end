@@ -19,6 +19,7 @@ export default function TX() {
     const [treat, setTreat] = useState("");
     const [comment, setComment] = useState("");
     const [cure_date, setCureDate] = useState("");
+    const [opdX, setOPD] = useState([]);
 
     const [x, setx] = useState(0);
     const [y, sety] = useState([]);
@@ -31,6 +32,7 @@ export default function TX() {
                 const opd = await axios.get(
                     `http://localhost:8000/opd/${citizen_id}`
                 )
+                setOPD(opd.data)
                 setUser(opd.data.client_id);
                 console.log(user)
                 const tx = await axios.get(
@@ -79,14 +81,14 @@ export default function TX() {
                 <Row >
                     <Col md={2} style={{ width: "7.5rem", marginTop: "4.5rem" }} >
                         <Stack gap={0} className="text-center  mt-5 pt-5">
-                            <Nav.Link href="#treatment" className='border-info rounded-top pt-5'
+                            <Nav.Link href="treatment" className='border-info rounded-top pt-5'
                                 style={{ height: "7.5rem", backgroundColor: "#C9FDD7", color: "#6892D5" }}>
                                 ข้อมูลการรักษา
                             </Nav.Link>
-                            <Nav.Link href="#Picture" className="border-top border-info pt-5"
+                            <Link to={`treatment/${opdX.client_id}`} className="border-top border-info pt-5"
                                 style={{ height: "7.5rem", backgroundColor: "#C9FDD7", color: "#6892D5" }}>
                                 X-ray flim
-                            </Nav.Link>
+                            </Link>
                             <Nav.Link href="#Contact" className="border-top border-info rounded-bottom pt-5"
                                 style={{ height: "7.5rem", backgroundColor: "#C9FDD7", color: "#6892D5" }}>
                                 ข้อมูลส่วนตัวคนไข้
@@ -104,7 +106,7 @@ export default function TX() {
                                 className='mt-2 ms-2 mb-2'
                             />
                             <Card.Body className='ms-10'>
-                                <Card.Text style={{ color: "#6892D5" }}> CN 0001 <br /> นาย อีธาน วินเทอร์ </Card.Text>
+                                <Card.Text style={{ color: "#6892D5" }}> CN {opdX.client_id} <br /> {opdX.title} {opdX.fname} {opdX.lname} </Card.Text>
                             </Card.Body>
                         </Card>
 
