@@ -20,10 +20,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<FormPatient />} />
-        <Route path="/patient/:citizen_id" element={<TX />} />
         <Route path="/treatment/:citizen_id" element={<TX />} />
         <Route path="/calendar" element={<Appointment />} />
-        <Route path="/picture/:citizen_id" element={<XRayFilm />} />
+        <Route path="/picture/" element={<XRayFilm />} />
         <Route path="/searchPatients" element={<Opdcard />} />
       </Routes>
 

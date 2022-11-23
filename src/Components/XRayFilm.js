@@ -12,7 +12,7 @@ export default function XRayFilm() {
     async function getxRayfilm() {
       try {
         setLoading(true);
-        const xRayFilm = await axios.get(`http://localhost:8000/tx/100`);
+        const xRayFilm = await axios.get(`http://localhost:8000/tx/xrayfilm/3000`);
         setxRayFilm(xRayFilm.data.xray_film);
       }
       catch (e) {
@@ -52,15 +52,15 @@ export default function XRayFilm() {
         <Row>
           <Col md={3} style={{ width: "7.5rem", marginTop: "4.5rem" }} >
             <Stack gap={0} className="text-center  mt-5 pt-5">
-              <Nav.Link href="#treatment" className='rounded-top pt-5'
+              <Nav.Link href="treatment/3000" className='rounded-top pt-5'
                 style={{ height: "7.5rem", backgroundColor: "#C9FDD7", color: "#6892D5" }}>
                 ข้อมูลการรักษา
               </Nav.Link>
-              <Nav.Link href="#Picture" className="border-top border-info pt-5"
+              <Nav.Link href="Picture" className="border-top border-info pt-5"
                 style={{ height: "7.5rem", backgroundColor: "#C9FDD7", color: "#6892D5" }}>
                 X-ray flim
               </Nav.Link>
-              <Nav.Link href="#Contact" className="border-top border-info rounded-bottom pt-5"
+              <Nav.Link href="searchPatients" className="border-top border-info rounded-bottom pt-5"
                 style={{ height: "7.5rem", backgroundColor: "#C9FDD7", color: "#6892D5" }}>
                 ข้อมูลส่วนตัวคนไข้
               </Nav.Link>

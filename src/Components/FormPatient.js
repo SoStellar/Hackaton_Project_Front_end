@@ -35,10 +35,12 @@ export default function FormPatient() {
       .then((response) => {
         console.log(response);
         alert("Add Complete");
+        window.location.href = ('http://localhost:3000/searchPatients');
       })
       .catch((error) => {
         console.log(error);
       });
+    window.location.href = ('http://localhost:3000/searchPatients');
   };
   const fileToBase64 = (filename, filepath) => {
     return new Promise((resolve) => {

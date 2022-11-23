@@ -11,9 +11,9 @@ export default function Home() {
                 <Row>
                     <Col md={12} sm={12} >
                         <Container fluid className="" style={{ marginTop: "2rem" }} >
-                            <h1 className="fw-bold  ms-5 mb-3" 
-                            style={{ color: "#79D1C3", textShadow: "2px 2px 2px #6892D5" }}> 
-                            A happy smile with a healthy smile 
+                            <h1 className="fw-bold  ms-5 mb-3"
+                                style={{ color: "#79D1C3", textShadow: "2px 2px 2px #6892D5" }}>
+                                A happy smile with a healthy smile
                             </h1>
                             <Row>
                                 <Col md={4} sm={4} className=" text-center ">
@@ -35,8 +35,8 @@ export default function Home() {
                                             width: "auto", height: "auto", backgroundColor: "#6892D5"
                                         }}>
                                         <Card.Body className='ms-10'>
-                                            <Card.Link href="patient" className="text-center" 
-                                            style={{ color: "white", fontSize: "32px" }}>
+                                            <Card.Link href="treatment/100" className="text-center"
+                                                style={{ color: "white", fontSize: "32px" }}>
                                                 <FaUserEdit style={{ width: "auto", height: "auto" }} /> <br /> คนไข้ </Card.Link>
                                         </Card.Body>
                                     </Card>
@@ -48,8 +48,8 @@ export default function Home() {
                                             width: "auto", height: "auto", backgroundColor: "#6892D5"
                                         }}>
                                         <Card.Body className='ms-10'>
-                                            <Card.Link href="calendar" className="text-center" 
-                                            style={{ color: "white", fontSize: "32px" }}>
+                                            <Card.Link href="calendar" className="text-center"
+                                                style={{ color: "white", fontSize: "32px" }}>
                                                 <IoCalendar style={{ width: "auto", height: "auto" }} /> <br /> ตารางนัด </Card.Link>
                                         </Card.Body>
                                     </Card>
